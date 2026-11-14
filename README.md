@@ -28,6 +28,12 @@ Hermes Agent, OpenClaw, dan klien lain yang membaca format `SKILL.md`.
    `KEUANGAN_API_KEY`.
 4. Minta agent: "catat beli kopi 15rb pakai cash".
 
+Atau pasang langsung dari repo ini dengan [`skills` CLI](https://skills.sh):
+
+```bash
+npx skills add madaldho/keuangan-pribadi-skills --skill keuangan-pribadi --global --yes
+```
+
 Untuk memasang lewat agent, salin prompt sesuai klien dari folder
 [`prompts/`](prompts/).
 
