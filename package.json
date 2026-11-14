@@ -1,0 +1,13 @@
+{
+  "name": "keuangan-pribadi-skills",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Agent skill dan MCP server untuk aplikasi Keuangan Pribadi",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --check",
+    "test": "node --test test/*.test.mjs"
+  }
+}
