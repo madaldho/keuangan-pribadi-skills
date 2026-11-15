@@ -78,6 +78,11 @@ setelah user setuju.
 - Koreksi transaksi pakai `update_transaction`. Jangan hapus lalu buat ulang.
 - Saldo dompet dihitung otomatis oleh database. Jangan ubah `balance` lewat
   `update_wallet`. Untuk koreksi saldo pakai `adjust_balance`.
+- Dompet baru untuk bank atau e-wallet: pakai nama mereknya (mis. "BCA",
+  "GoPay") dan jangan isi `color` atau `type` kecuali pengguna minta. Server
+  memasang logo, warna, dan tipe yang sama dengan Saran Pintar di aplikasi.
+  Dompet lama tanpa logo bisa dibenahi dengan `update_wallet` +
+  `apply_preset: true`.
 - Setor dan tarik tabungan pakai `savings_deposit` / `savings_withdraw`, bukan
   `create_transaction`.
 - Hutang (`payable`) menambah saldo dompet saat dicatat; piutang

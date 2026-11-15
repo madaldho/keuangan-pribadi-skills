@@ -104,18 +104,20 @@ export const ACTIONS = [
 
   // ── Dompet & kategori ──
   { name: 'create_wallet', method: 'POST',
-    summary: 'Buat dompet baru. Akun Free maksimal 5 dompet.',
+    summary: 'Buat dompet baru. Akun Free maksimal 5 dompet. Nama bank/e-wallet yang dikenal (BCA, Mandiri, BRI, BNI, BSI, Jago, SeaBank, Jenius, GoPay, OVO, Dana, ShopeePay, LinkAja, dll) otomatis dapat logo, warna, dan tipe Saran Pintar.',
     params: {
-      name: str('Nama dompet.'),
-      type: str('cash, bank, savings, atau investment.', { enum: ['cash', 'bank', 'savings', 'investment'] }),
-      balance: num('Saldo awal.'), color: str('Warna hex, misalnya #1f2937.'),
+      name: str('Nama dompet. Pakai nama bank/e-wallet apa adanya (mis. "BCA", "GoPay") supaya logonya terpasang.'),
+      type: str('cash (tunai), bank, savings (tabungan), atau investment (E-Wallet). Boleh dikosongkan untuk bank/e-wallet yang dikenal.', { enum: ['cash', 'bank', 'savings', 'investment'] }),
+      balance: num('Saldo awal.'),
+      color: str('Warna hex. Kosongkan untuk bank/e-wallet yang dikenal agar warna merek dipakai.'),
     }, required: ['name'] },
   { name: 'update_wallet', method: 'PATCH',
-    summary: 'Ganti nama, tipe, atau warna dompet. Bukan untuk mengubah saldo.',
+    summary: 'Ganti nama, tipe, warna, atau pasang logo dompet. Bukan untuk mengubah saldo.',
     params: {
       wallet_name: walletName, new_name: str('Nama baru.'),
-      type: str('cash, bank, savings, atau investment.', { enum: ['cash', 'bank', 'savings', 'investment'] }),
+      type: str('cash (tunai), bank, savings (tabungan), atau investment (E-Wallet).', { enum: ['cash', 'bank', 'savings', 'investment'] }),
       color: str('Warna hex.'),
+      apply_preset: bool('true untuk memasang logo dan warna Saran Pintar sesuai nama dompet (untuk dompet bank/e-wallet yang belum berlogo).'),
     }, required: ['wallet_name'] },
   { name: 'archive_wallet', method: 'PATCH',
     summary: 'Arsipkan atau buka arsip dompet.',

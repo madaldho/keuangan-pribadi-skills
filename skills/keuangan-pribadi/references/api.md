@@ -183,23 +183,24 @@ Top-up atau koreksi saldo tanpa kategori. Isi salah satu: adjustment (selisih) a
 
 `POST ?action=create_wallet`
 
-Buat dompet baru. Akun Free maksimal 5 dompet.
+Buat dompet baru. Akun Free maksimal 5 dompet. Nama bank/e-wallet yang dikenal (BCA, Mandiri, BRI, BNI, BSI, Jago, SeaBank, Jenius, GoPay, OVO, Dana, ShopeePay, LinkAja, dll) otomatis dapat logo, warna, dan tipe Saran Pintar.
 
-- **`name`** string: Nama dompet.
-- `type` string (cash \| bank \| savings \| investment): cash, bank, savings, atau investment.
+- **`name`** string: Nama dompet. Pakai nama bank/e-wallet apa adanya (mis. "BCA", "GoPay") supaya logonya terpasang.
+- `type` string (cash \| bank \| savings \| investment): cash (tunai), bank, savings (tabungan), atau investment (E-Wallet). Boleh dikosongkan untuk bank/e-wallet yang dikenal.
 - `balance` number: Saldo awal.
-- `color` string: Warna hex, misalnya #1f2937.
+- `color` string: Warna hex. Kosongkan untuk bank/e-wallet yang dikenal agar warna merek dipakai.
 
 ### `update_wallet`
 
 `PATCH ?action=update_wallet`
 
-Ganti nama, tipe, atau warna dompet. Bukan untuk mengubah saldo.
+Ganti nama, tipe, warna, atau pasang logo dompet. Bukan untuk mengubah saldo.
 
 - **`wallet_name`** string: Nama dompet persis seperti di context, misalnya "Cash" atau "BCA".
 - `new_name` string: Nama baru.
-- `type` string (cash \| bank \| savings \| investment): cash, bank, savings, atau investment.
+- `type` string (cash \| bank \| savings \| investment): cash (tunai), bank, savings (tabungan), atau investment (E-Wallet).
 - `color` string: Warna hex.
+- `apply_preset` boolean: true untuk memasang logo dan warna Saran Pintar sesuai nama dompet (untuk dompet bank/e-wallet yang belum berlogo).
 
 ### `archive_wallet`
 
