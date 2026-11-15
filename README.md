@@ -68,7 +68,11 @@ Untuk memasang lewat agent, salin prompt sesuai klien dari folder
 
 ## MCP
 
-`skills/keuangan-pribadi/scripts/mcp.mjs` adalah MCP server lokal tanpa
+**Konektor remote (tanpa API key):** tempel `https://app.keuanganpribadi.web.id/mcp`
+sebagai konektor kustom di Claude atau ChatGPT, login, tekan Izinkan.
+Claude Code: `claude mcp add --transport http keuangan-pribadi https://app.keuanganpribadi.web.id/mcp`.
+
+**Server lokal (API key):** `skills/keuangan-pribadi/scripts/mcp.mjs` adalah MCP server lokal tanpa
 dependency. Setiap action menjadi tool `keuangan_<action>`. Konfigurasi untuk
 Claude Desktop, Claude Code, dan Cursor ada di
 [`references/mcp.md`](skills/keuangan-pribadi/references/mcp.md).

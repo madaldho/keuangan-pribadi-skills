@@ -1,14 +1,37 @@
 # MCP server
 
+Ada dua cara memakai MCP.
+
+## 1. Konektor remote (disarankan)
+
+URL: `https://app.keuanganpribadi.web.id/mcp`
+
+Tanpa API key. Tempel URL sebagai konektor kustom; klien membuka halaman
+login Keuangan Pribadi, pengguna menekan Izinkan, selesai (OAuth 2.1 +
+PKCE, Dynamic Client Registration).
+
+| Klien | Cara |
+|---|---|
+| Claude (web, desktop, mobile) | Settings → Connectors → Add custom connector → isi URL → Connect |
+| ChatGPT | Settings → Apps & Connectors → Create (developer mode) → URL, OAuth |
+| Claude Code | `claude mcp add --transport http keuangan-pribadi https://app.keuanganpribadi.web.id/mcp`, lalu `/mcp` → Authenticate |
+| Codex | `[mcp_servers.keuangan-pribadi]` dengan `url = "https://app.keuanganpribadi.web.id/mcp"`, lalu `codex mcp login keuangan-pribadi` |
+
+Tool sama dengan action API (`keuangan_<action>`, 33 tool) dan kuota Free/Pro
+sama. Akses dicabut di aplikasi: Pengaturan → AI Agent & API → Aplikasi terhubung.
+
+## 2. Server lokal (API key)
+
 `scripts/mcp.mjs` membuka setiap action API sebagai tool MCP bernama
 `keuangan_<action>` (33 tool). Server berjalan lokal lewat stdio, tanpa
-dependency, butuh Node.js 18+.
+dependency, butuh Node.js 18+. Pakai bila klienmu belum mendukung konektor URL.
 
 ## Perlu MCP atau tidak?
 
 | Klien | Rekomendasi |
 |---|---|
-| Claude Desktop, Cursor, Windsurf, VS Code Copilot | MCP. Klien ini tidak bisa menjalankan `curl` sendiri |
+| Claude, ChatGPT, klien dengan konektor URL | Konektor remote di atas |
+| Cursor, Windsurf, VS Code Copilot | MCP. Klien ini tidak bisa menjalankan `curl` sendiri |
 | Claude Code, Codex, OpenCode | Skill saja sudah cukup (agent menjalankan `kp.mjs`). MCP opsional untuk tool bertipe |
 | ChatGPT custom GPT, OpenClaw, Hermes, bot Telegram | HTTP API langsung dengan system prompt dari aplikasi |
 
