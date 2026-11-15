@@ -298,13 +298,14 @@ Tarik dari tabungan: tabungan berkurang, dompet bertambah.
 
 `POST ?action=create_budget` (Pro)
 
-Buat anggaran per kategori.
+Buat anggaran per kategori. Bulanan/mingguan otomatis diulang tiap periode (tanggal mulai sama).
 
 - **`category`** string: Nama kategori pengeluaran.
 - **`amount`** number: Jumlah dalam Rupiah, angka bulat positif. "15rb" ditulis 15000.
 - **`period`** string (monthly \| weekly \| custom \| date_range): monthly, weekly, custom, atau date_range.
-- `start_date` string: Mulai (untuk custom/date_range).
-- `end_date` string: Selesai (untuk custom/date_range).
+- `start_date` string: Mulai periode (default hari ini). Mis. tanggal gajian 25 untuk siklus 25-24.
+- `end_date` string: Selesai (wajib untuk custom/date_range; monthly/weekly dihitung otomatis).
+- `recurring` boolean: Ulangi otomatis tiap periode berakhir. Default true untuk monthly/weekly, false untuk rentang kustom.
 
 ### `create_asset`
 
