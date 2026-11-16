@@ -90,6 +90,18 @@ setelah user setuju.
 - Kirim nama dompet dan kategori sebagai teks (`wallet_name`,
   `category_name`). API mencocokkan nama sendiri.
 
+## Akun dan dompet bersama
+
+- `context.shared_accounts` berisi akun orang lain yang dibagikan ke pengguna.
+  Tambahkan `account=<nama atau email>` (query string, atau `account` di body
+  JSON) di pemanggilan mana pun untuk membaca akun itu. Akses "bisa edit" juga
+  boleh mencatat; akses "hanya lihat" ditolak saat menulis. Tanpa `account`
+  berarti akun pengguna sendiri. Selalu sebutkan ke pengguna akun mana yang
+  sedang dipakai.
+- `context.shared_wallets` adalah dompet orang lain yang dibagikan ke pengguna.
+  Pakai lewat `wallet_name` seperti dompet biasa; transaksinya ikut muncul di
+  `transactions`.
+
 ## Batas paket
 
 Akun Free: `context` dan `stats` maksimal 3 kali per hari; hutang, tabungan,
